@@ -8,7 +8,12 @@ const Navbar = () => {
   const [token, setToken] = useState(true);
   return (
     <div className="flex items-center justify-between text-sm py-4 mb-5 border-b-gray-400 border-b-2">
-      <h1 className="w-44 text-primary font-bold text-3xl">DoctorsHub</h1>
+      <img
+        onClick={() => navigate("/")}
+        src={assets.logo}
+        alt=""
+        className="w-44 cursor-pointer"
+      />
       <ul className="hidden md:flex items-start gap-5 font-medium">
         <NavLink to="/">
           <li className="py-1">HOME</li>

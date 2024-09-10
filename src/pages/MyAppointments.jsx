@@ -1,5 +1,5 @@
 const MyAppointments = () => {
-  return <div>MyApointments</div>;
+  return <div>MyAppointment</div>;
 };
 
 export default MyAppointments;

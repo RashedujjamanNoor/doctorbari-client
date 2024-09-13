@@ -82,7 +82,7 @@ const MyProfile = () => {
               />
             </p>
           ) : (
-            <p className="bg-gray-500">
+            <p>
               {userData.address.line1} <br /> {userData.address.line2}
             </p>
           )}

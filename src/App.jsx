@@ -16,7 +16,7 @@ function App() {
     <div className="mx-4 sm:mx-[10%]">
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/doctorbari-client" element={<Home />} />
         <Route path="/doctors" element={<Doctors />} />
         <Route path="/doctors/:speciality" element={<Doctors />} />
         <Route path="/login" element={<Login />} />

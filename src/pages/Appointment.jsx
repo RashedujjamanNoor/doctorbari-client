@@ -7,65 +7,65 @@ import RelatedDoctors from "../components/RelatedDoctors";
 const Appointments = () => {
   const { docId } = useParams();
   const { doctors } = useContext(AppContext);
-  const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
   const [doctorInfo, setDoctorInfo] = useState(null);
-  const [docSlots, setDocSlots] = useState([]);
-  const [slotIndex, setSlotIndex] = useState(0);
-  const [slotTime, setSlotTime] = useState("");
+  // const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+  // const [docSlots, setDocSlots] = useState([]);
+  // const [slotIndex, setSlotIndex] = useState(0);
+  // const [slotTime, setSlotTime] = useState("");
 
   const fetchDocInfo = async () => {
     const docInfo = await doctors.find((doc) => doc._id === docId);
     setDoctorInfo(docInfo);
   };
 
-  const getAvailableSlots = () => {
-    setDocSlots([]);
-    let today = new Date();
+  // const getAvailableSlots = () => {
+  //   setDocSlots([]);
+  //   let today = new Date();
 
-    for (let i = 0; i < 7; i++) {
-      // getting data with index
-      let currentDate = new Date(today);
-      currentDate.setDate(today.getDate() + i);
+  //   for (let i = 0; i < 7; i++) {
+  //     // getting data with index
+  //     let currentDate = new Date(today);
+  //     currentDate.setDate(today.getDate() + i);
 
-      // setting end time of the date with index
-      let endTime = new Date();
-      endTime.setDate(today.getDate() + i);
-      endTime.setHours(21, 0, 0, 0);
+  //     // setting end time of the date with index
+  //     let endTime = new Date();
+  //     endTime.setDate(today.getDate() + i);
+  //     endTime.setHours(21, 0, 0, 0);
 
-      // setting hours
-      if (today.getDate() === currentDate.getDate()) {
-        currentDate.setHours(
-          currentDate.getHours() > 10 ? currentDate.getHours() + 1 : 10
-        );
-        currentDate.setMinutes(currentDate.getMinutes() > 30 ? 30 : 0);
-      } else {
-        currentDate.setHours(10);
-        currentDate.setMinutes(0);
-      }
+  //     // setting hours
+  //     if (today.getDate() === currentDate.getDate()) {
+  //       currentDate.setHours(
+  //         currentDate.getHours() > 10 ? currentDate.getHours() + 1 : 10
+  //       );
+  //       currentDate.setMinutes(currentDate.getMinutes() > 30 ? 30 : 0);
+  //     } else {
+  //       currentDate.setHours(10);
+  //       currentDate.setMinutes(0);
+  //     }
 
-      let timeSlots = [];
-      while (currentDate < endTime) {
-        let formattedTime = currentDate.toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-        });
-        timeSlots.push({
-          datetime: new Date(currentDate),
-          time: formattedTime,
-        });
-        currentDate.setMinutes(currentDate.getMinutes() + 30);
-      }
-      setDocSlots((prev) => [...prev, timeSlots]);
-    }
-  };
+  //     let timeSlots = [];
+  //     while (currentDate < endTime) {
+  //       let formattedTime = currentDate.toLocaleTimeString([], {
+  //         hour: "2-digit",
+  //         minute: "2-digit",
+  //       });
+  //       timeSlots.push({
+  //         datetime: new Date(currentDate),
+  //         time: formattedTime,
+  //       });
+  //       currentDate.setMinutes(currentDate.getMinutes() + 30);
+  //     }
+  //     setDocSlots((prev) => [...prev, timeSlots]);
+  //   }
+  // };
 
   useEffect(() => {
     fetchDocInfo();
   }, [doctors, docId]);
 
-  useEffect(() => {
-    getAvailableSlots();
-  }, [doctorInfo]);
+  // useEffect(() => {
+  //   getAvailableSlots();
+  // }, [doctorInfo]);
 
   return (
     doctorInfo && (
